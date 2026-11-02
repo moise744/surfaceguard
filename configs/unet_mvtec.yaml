@@ -1,0 +1,33 @@
+# SurfaceGuard — U-Net Segmentation Configuration
+
+project:
+  name: "SurfaceGuard U-Net"
+  seed: 42
+
+data:
+  root: "data/mvtec_ad"
+  category: "bottle"
+  image_size: [256, 256]
+  batch_size: 8
+  include_good: true
+
+model:
+  architecture: "unet"
+  in_channels: 3
+  num_classes: 1
+  base_features: 32
+  bilinear: true
+
+loss:
+  type: "combined_bce_dice"
+  bce_weight: 0.5
+  dice_weight: 0.5
+
+training:
+  epochs: 15
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 5
+
+output:
+  dir: "outputs/unet"

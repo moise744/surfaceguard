@@ -1,0 +1,32 @@
+# SurfaceGuard — DeepLabV3+ Segmentation Configuration
+
+project:
+  name: "SurfaceGuard DeepLabV3+"
+  seed: 42
+
+data:
+  root: "data/mvtec_ad"
+  category: "tile"
+  image_size: [256, 256]
+  batch_size: 8
+  include_good: true
+
+model:
+  architecture: "deeplabv3plus"
+  in_channels: 3
+  num_classes: 1
+  base_channels: 32
+
+loss:
+  type: "focal"
+  alpha: 0.75
+  gamma: 2.0
+
+training:
+  epochs: 15
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  early_stopping_patience: 5
+
+output:
+  dir: "outputs/deeplabv3"

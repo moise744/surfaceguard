@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Data & Weights
+data/mvtec_ad/
+data/**/*.png
+data/**/*.jpg
+outputs/*.pth
+outputs/**/*.png
+outputs/**/*.json
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+.pytest_cache/
