@@ -177,3 +177,26 @@ class SurfaceSegmentor:
             )
 
         return regions
+
+    def segment(
+        self,
+        image: Union[str, Path, np.ndarray, "Image.Image"],
+        threshold: Optional[float] = None,
+    ) -> "SegmentationResult":
+        """Alias for :meth:`predict` for API compatibility.
+
+        Args:
+            image: Input image (path, numpy array, or PIL Image).
+            threshold: Optional override for the decision threshold.
+
+        Returns:
+            SegmentationResult instance.
+        """
+        original_threshold = self.threshold
+        if threshold is not None:
+            self.threshold = float(threshold)
+        try:
+            result = self.predict(image)
+        finally:
+            self.threshold = original_threshold
+        return result
